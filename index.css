@@ -27,28 +27,31 @@ footer {
 }
 
 /* TYPOGRAPHY */
-.header {
-    font-family: 'Noto Sans Mono', monospace;
-    font-size: 4vw;
-    overflow: hidden; /* Content is not revealed until the animation sequence */
-    border-right: 14px solid orange; /* Typewriter cursor */
-    white-space: nowrap; /* Keeps content on single line */
-    margin: 0 auto; /*  Scrolling effect for animation sequence */
-    letter-spacing: 10px;
-}
-
-/* TYPEWRITER EFFECT */
 .typewriter {
-    animation: typing 3.5s steps(50, end), blink-caret .75s step-end infinite;
+    font-family: 'Noto Sans Mono', monospace;
+    font-size: 5rem;
+    color:#0000;
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 50vw }
+/* TYPEWRITER */
+.typewriter {
+    color:#0000;
+    background:
+        linear-gradient(-90deg,#333 5px,#0000 0) 10px 0,
+        linear-gradient(#333 0 0) 0 0;
+    background-size:calc(var(--n)*1ch) 200%;
+    -webkit-background-clip:padding-box,text;
+    background-clip:padding-box,text;
+    background-repeat:no-repeat;
+    animation: 
+        blinking .7s infinite steps(1),   
+        typing calc(var(--n)*.3s) steps(var(--n)) forwards;
 }
-@keyframes blink-caret {
-    from, to {border-color: transparent; }
-    50% { border-color: orange; }
+@keyframes typing {
+    from {background-size:0 200%};
+}
+@keyframes blinking {
+    50% {background-position:0 -100%,0 0};
 }
 
 /* BUTTONS */
