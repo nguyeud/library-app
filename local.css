@@ -38,6 +38,9 @@ header {
     padding: 2rem;
     border-bottom: 1px solid #ddd;
 }
+main {
+    height: calc(100% - 8rem);
+}
 
 /* ICONS */
 i {
@@ -80,10 +83,49 @@ i {
     max-width: 40rem;
 }
 /* Header: Right-side */
-img {
+#right-side > img {
     background-color: #fce7f3;
     min-width: 4.5rem;
     height: 4.5rem;
     border-radius: 50%;
     object-fit: scale-down;
+}
+
+/* MAIN */
+#collection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 4rem;
+}
+#collection > img {
+    max-width: 20rem;
+    height: auto;
+}
+
+/* BUTTONS */
+.btn {
+    background-color: #fdba74;
+    color: #fff;
+    border: 1px solid #fdba74;
+}
+.btn:hover {
+    border: 1px solid #333;
+}
+.btn-add {
+    width: 4rem;
+    height: 4rem;
+    margin: auto;
+    border-radius: 50%;
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    z-index: 1;
+}
+.btn-add > i {
+    /* Off-center, adjust vertical position */
+    position: relative;
+    top: 2px;
 }
