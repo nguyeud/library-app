@@ -6,6 +6,7 @@ html {
     font-size: 10px;
 }
 body {
+    font-size: 1.2rem;
     width: 100%;
     height: 100vh;
     margin: 0;
@@ -19,11 +20,28 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 5rem;
 }
 footer {
     background-color: #ddd;
     height: 3rem;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #333;
+}
+a:hover {
+    color: #93c5fd;
+}
+
+/* ICONS */
+i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
 }
 
 /* TYPOGRAPHY */
@@ -32,12 +50,19 @@ footer {
     font-size: 5rem;
     color:#0000;
 }
+.footer-text {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
 /* TYPEWRITER */
 .typewriter {
     color:#0000;
     background:
-        linear-gradient(-90deg,#333 5px,#0000 0) 10px 0,
+        linear-gradient(-90deg, #333 5px,#0000 0) 10px 0,
         linear-gradient(#333 0 0) 0 0;
     background-size:calc(var(--n)*1ch) 200%;
     -webkit-background-clip:padding-box,text;
@@ -48,10 +73,23 @@ footer {
         typing calc(var(--n)*.15s) steps(var(--n)) forwards;
 }
 @keyframes typing {
-    from {background-size:0 200%};
+    from {background-size: 0 200%};
 }
 @keyframes blinking {
-    50% {background-position:0 -100%,0 0};
+    50% {background-position: 0 -100%, 0 0};
 }
 
 /* BUTTONS */
+.btn {
+    background-color: #93c5fd;
+    font-size: 1.5rem;
+    color: #fff;
+    width: 12rem;
+    border: 1px solid #93c5fd;
+    border-radius: 2rem;
+    margin: 0 4rem;
+    padding: 1rem;
+}
+.btn:hover {
+    border: 1px solid #333;
+}
