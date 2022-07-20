@@ -81,9 +81,9 @@ i {
 
 /* BUTTONS */
 .btn {
-    background-color: #93c5fd;
+    background-color: #fdba74;
     color: #fff;
-    border: 1px solid #93c5fd;
+    border: 1px solid #fdba74;
 }
 .btn:hover {
     border: 1px solid #333;
