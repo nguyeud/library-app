@@ -130,9 +130,15 @@ i {
 }
 .form-addBook ul li {
     border: 1px solid #ddd;
-    background-color: #eee;
+    background-color: #e9ecef;
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
+}
+.form-addBook ul li:hover {
+    background-color: #dde0e3;
+}
+.form-addBook ul li i {
+    cursor: pointer;
 }
 .fi-rr-cross-small {
     font-size: 1rem;
