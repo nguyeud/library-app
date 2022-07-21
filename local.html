@@ -76,39 +76,41 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-addBook">
-                                <label for="title">Title</label>
+                                <label for="title" class="semi-bold form-label-text">Title</label>
                                 <input type="text" class="form-control" name="title" id="title">
+                                <p>Please provide a title.</p>
                             </div>
                             <div class="form-addBook">
-                                <label for="author">Author</label>
+                                <label for="author" class="semi-bold form-label-text">Author</label>
                                 <input type="text" class="form-control" name="author" id="author">
+                                <p>Please provide an author.</p>
                             </div>
                             <div class="form-addBook">
-                                <label for="genre">Genre</label>
-                                <input type="text" class="form-control" name="genre" id="genre">
-                            </div>
-                            <div class="form-addBook">
-                                <label for="filename" class="form-label">Cover</label>
+                                <label for="filename" class="semi-bold form-label-text">Cover</label>
                                 <input class="form-control" type="file" id="filename">
                                 <p>Please choose an image file (i.e. jpg, png).</p>
                             </div>
                             <div class="form-addBook">
-                                <label for="status">Status</label>
-                                <select class="form-select" aria-label="select" name="status">
-                                    <option selected></option>
+                                <label for="status" class="semi-bold form-label-text">Status</label>
+                                <select class="form-select" aria-label="select" name="status" id="status">
                                     <option value="0">Not Started</option>
                                     <option value="1">In Progress</option>
                                     <option value="2">Completed</option>
                                   </select>
                             </div>
                             <div class="form-addBook">
-                                <label for="rating" class="form-label">Rating: <span>0</span></label>
+                                <label for="tag" class="semi-bold form-label-text">Tags</label>
+                                <p>Please enter or add a comma after each tag (up to 10 tags).</p>
+                                <input type="text" class="form-control" name="tag" id="tag">
+                            </div>
+                            <div class="form-addBook">
+                                <label for="rating" class="semi-bold form-label-text">Rating: <span>0</span></label>
                                 <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveBook()">Save changes</button>
                         </div>
                     </div>
                 </div>
