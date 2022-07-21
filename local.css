@@ -129,3 +129,10 @@ i {
     position: relative;
     top: 2px;
 }
+
+/* MODAL */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
