@@ -84,13 +84,26 @@
                                 <input type="text" class="form-control" name="author" id="author">
                             </div>
                             <div class="form-addBook">
+                                <label for="genre">Genre</label>
+                                <input type="text" class="form-control" name="genre" id="genre">
+                            </div>
+                            <div class="form-addBook">
+                                <label for="filename" class="form-label">Cover</label>
+                                <input class="form-control" type="file" id="filename">
+                                <p>Please choose an image file (i.e. jpg, png).</p>
+                            </div>
+                            <div class="form-addBook">
                                 <label for="status">Status</label>
-                                <select class="form-select" aria-label="Default select" name="status">
+                                <select class="form-select" aria-label="select" name="status">
                                     <option selected></option>
-                                    <option value="1">Not Started</option>
-                                    <option value="2">In Progress</option>
-                                    <option value="3">Completed</option>
+                                    <option value="0">Not Started</option>
+                                    <option value="1">In Progress</option>
+                                    <option value="2">Completed</option>
                                   </select>
+                            </div>
+                            <div class="form-addBook">
+                                <label for="rating" class="form-label">Rating: <span>0</span></label>
+                                <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
                             </div>
                         </div>
                         <div class="modal-footer">
