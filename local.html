@@ -75,45 +75,47 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-addBook">
-                                <label for="title" class="semi-bold form-label-text">Title</label>
-                                <input type="text" class="form-control" name="title" id="title">
-                                <p>Please provide a title.</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="author" class="semi-bold form-label-text">Author</label>
-                                <input type="text" class="form-control" name="author" id="author">
-                                <p>Please provide an author.</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="filename" class="semi-bold form-label-text">Cover</label>
-                                <input class="form-control" type="file" id="filename">
-                                <p>Please choose an image file (i.e. jpg, png).</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="status" class="semi-bold form-label-text">Status</label>
-                                <select class="form-select" aria-label="select" name="status" id="status">
-                                    <option value="0">Not Started</option>
-                                    <option value="1">In Progress</option>
-                                    <option value="2">Completed</option>
-                                  </select>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="tag" class="semi-bold form-label-text">Tags</label>
-                                <p>Please enter or add a comma after each tag (up to 10 tags).</p>
-                                <ul>
-                                    <input type="text" class="form-control" name="tag" id="tag">
-                                    <p>Limit has been reached! Please remove other tags to add more.</p>
-                                </ul>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="rating" class="semi-bold form-label-text">Rating:</label> <span class="form-label-text">0</span>
-                                <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
-                            </div>
+                            <form id="modalForm">
+                                <div class="form-addBook">
+                                    <label for="title" class="semi-bold form-label-text">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title">
+                                    <p>Please provide a title.</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="author" class="semi-bold form-label-text">Author</label>
+                                    <input type="text" class="form-control" name="author" id="author">
+                                    <p>Please provide an author.</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="filename" class="semi-bold form-label-text">Cover</label>
+                                    <input class="form-control" type="file" id="filename">
+                                    <p>Please choose an image file (i.e. jpg, png).</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="status" class="semi-bold form-label-text">Status</label>
+                                    <select class="form-select" aria-label="select" name="status" id="status">
+                                        <option value="0">Not Started</option>
+                                        <option value="1">In Progress</option>
+                                        <option value="2">Completed</option>
+                                    </select>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="tag" class="semi-bold form-label-text">Tags</label>
+                                    <p>Please enter or add a comma after each tag (up to 10 tags).</p>
+                                    <ul>
+                                        <input type="text" class="form-control" name="tag" id="tag">
+                                        <p>Limit has been reached! Please remove other tags to add more.</p>
+                                    </ul>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="rating" class="semi-bold form-label-text">Rating:</label> <span class="form-label-text">0</span>
+                                    <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
+                                </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn" data-bs-dismiss="modal" onclick="saveBook()">Save changes</button>
+                            <button type="button" class="btn" data-bs-dismiss="modal" onclick="addBookToLibrary(); clearForm()">Save changes</button>
                         </div>
                     </div>
                 </div>

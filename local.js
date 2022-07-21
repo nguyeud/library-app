@@ -1,6 +1,15 @@
-// TAG FUNCTION
+// VARIABLES AND CONSTANTS
+let formTitle = document.getElementById('title').value;
+let formAuthor = document.getElementById('author').value;
+let formFilename = document.getElementById('filename').value;
+let formStatus = document.getElementById('status').value;
+let formRating = document.getElementById('rating').value;
+let modalForm = document.getElementById("modalForm");
 const formTag = document.getElementById('tag');
+
+// TAG FUNCTION
 const ul = document.querySelector("ul");
+input = ul.querySelector("input");
 
 let tags = [];
 
@@ -36,23 +45,35 @@ function addTag(e) {
 
 input.addEventListener("keyup", addTag);
 
+// SAVE BOOK INFORMATION
+let myLibrary = [];
 
+function Book(title, author, filename, status, tags, rating) {
+    this.title = title
+    this.author = author
+    this.cover = filename
+    this.status = status
+    this.tags = tags
+    this.rating = rating
+};
 
+function addBookToLibrary() {
+    // Set book information variables
+    formTitle = document.getElementById('title').value;
+    formAuthor = document.getElementById('author').value;
+    formFilename = document.getElementById('filename').value;
+    formStatus = document.getElementById('status').value;
+    formRating = document.getElementById('rating').value;
 
+    // Create new book
+    let newBook = new Book(formTitle, formAuthor, formFilename, formStatus, tags, formRating);
 
+    // Push to local storage
+    myLibrary.push(newBook);
+    window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+};
 
-
-
-
-
-
-
-
-
-function saveBook() {
-    let formTitle = document.getElementById('title').value;
-    let formAuthor = document.getElementById('author').value;
-    let formFilename = document.getElementById('filename').value;
-    let formStatus = document.getElementById('status').value;
-    let formRating = document.getElementById('rating').value;
+function clearForm() {
+    modalForm.reset();
+    // Add removal of tags displayed
 }
