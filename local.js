@@ -9,7 +9,6 @@ const formTag = document.getElementById('tag');
 
 // TAG FUNCTION
 const ul = document.querySelector("ul");
-input = ul.querySelector("input");
 
 let tags = [];
 
@@ -43,7 +42,7 @@ function addTag(e) {
     };
 };
 
-input.addEventListener("keyup", addTag);
+formTag.addEventListener("keyup", addTag);
 
 // SAVE BOOK INFORMATION
 let myLibrary = [];
@@ -76,4 +75,11 @@ function addBookToLibrary() {
 function clearForm() {
     modalForm.reset();
     // Add removal of tags displayed
+    let tagList = document.getElementById("tagList");
+    let listLength = tagList.children.length;
+
+    for (i = 0; i < listLength; i++) {
+        tagList.removeChild(tagList.children[0]);
+    } 
+    tags = [];
 }
