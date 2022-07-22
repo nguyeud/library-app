@@ -5,11 +5,13 @@ main {
     align-items: center;
     gap: 4rem;
 }
-/* LEFT-SIDE */
-#left-side {
+
+/* MAIN */
+/* Left-side */
+#main-left-side {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 }
 #landing-header-text {
     font-family: 'Poppins', sans-serif;
@@ -28,9 +30,8 @@ main {
     padding: 1vw;
     border-radius: 6rem;
 }
-
-/* RIGHT-SIDE */
-#right-side {
+/* Right-side */
+#main-right-side {
     max-width: 50%;
     display: flex;
     justify-content: center;
