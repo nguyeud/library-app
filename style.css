@@ -1,6 +1,5 @@
 html {
-    /* font-family: 'Noto Sans Mono', monospace;
-    font-family: 'Poppins', sans-serif; */
+    /* font-family: 'Poppins', sans-serif; */
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     font-size: 12px;
@@ -22,16 +21,11 @@ header {
     padding: 3rem 5rem;
 }
 main {
-    height: calc(100vh - 8rem);
+    height: calc(100vh - 9rem);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
 }
 footer {
-    background-color: #ddd;
-    height: 3rem;
+    height: 4rem;
 }
 
 /* LINKS */
@@ -40,9 +34,6 @@ a {
     padding: 0;
     text-decoration: none;
     color: #333;
-}
-a:hover {
-    color: #93c5fd;
 }
 
 /* ICONS */
@@ -67,27 +58,10 @@ p {
     font-size: 1.3rem;
     font-weight: 500;
 }
-.footer-text {
+#footer-text {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-/* BUTTONS */
-.btn {
-    background-color: #fdba74;
-    color: #fff;
-    border: 1px solid #fdba74;
-}
-.btn:hover {
-    border: 1px solid #333;
-}
-.btn-big {
-    width: 10rem;
-    font-size: 1.2rem;
-    border-radius: 2rem;
-    margin: 0 4rem;
-    padding: 1rem;
 }
