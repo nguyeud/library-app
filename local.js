@@ -91,11 +91,13 @@ function displayBook(myLibrary) {
             status = "Completed";
         }
         // create book HTML
+        let id = myLibrary[i]["title"].replace(/\s/g, "SPACESPACE");
+        console.log(id);
         let bookHTML = 
-        `<div class="collection">
+        `<div class="collection" id="${id}">
             <div class="collection-actions">
-                <i class="fi fi-rr-pencil"></i>
-                <i class="fi fi-rr-trash"></i>
+                <i class="fi fi-rr-pencil btn-icon edit" id="edit-${id}"></i>
+                <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
             </div>
             <div class="collection-cover"><img class="collect-img" src=${myLibrary[i]["cover"]}></div>
             <div class="collect-text">
@@ -161,9 +163,47 @@ function clearForm() {
     tags = [];
 }
 
+// DELETE FUNCTION
+// Wait for elements to load
+function waitForElement(element, callBack){
+    window.setTimeout(function(){
+        const deleteBtn = document.querySelectorAll(".delete");
+      if(deleteBtn) {
+        callBack(element, element);
+      } else {
+        waitForElement(element, callBack);
+      }
+    }, 500)
+}
+waitForElement(".delete", function(){
+    const deleteBtn = document.querySelectorAll(".delete");
+    deleteBtn.forEach(book => {
+        book.addEventListener("click", e => {
+            // get title of book
+            let titleID = e.target.id.slice(e.target.id.indexOf("-") + 1, e.target.id.length)
+            let title = e.target.id.slice(e.target.id.indexOf("-") + 1, e.target.id.length).replace(/SPACESPACE/g, " ");;
+            // load library
+            let library = JSON.parse(window.localStorage.getItem("myLibrary"));
+            for(let i = 0; i < library.length; i++) {
+                let matchTitle = library[i]["title"];
+                if(title == matchTitle) {
+                    // remove book from library
+                    library.splice(i, 1);
+                    // re-set myLibrary in local storage
+                    window.localStorage.setItem("myLibrary", JSON.stringify(library));
+                    let container = document.getElementById(titleID);
+                    // remove container with book and associated divs
+                    container.querySelectorAll("div").forEach(div => div.remove());
+                    container.remove();
+                }
+            }
+        })
+    })
+})
+
 // ON WINDOW LOAD
 window.addEventListener('load', (event) => {
     // Load books
     window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     displayBook(JSON.parse(window.localStorage.getItem("myLibrary")));
-  });
+})

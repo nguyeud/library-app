@@ -70,6 +70,13 @@ main {
     gap: 1rem;
     width: 100%;
 }
+.btn-icon {
+    transition: color .5s;
+}
+.btn-icon:hover {
+    cursor: pointer;
+    color: #ffc107;
+}
 
 /* FORM */
 form {
