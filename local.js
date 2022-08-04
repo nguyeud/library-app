@@ -99,6 +99,15 @@ function displayBook(myLibrary) {
             status = "Completed";
         }
 
+        // If no cover image is available
+        let image = myLibrary[i]["cover"];
+        let imageHTML = `<div class="collection-cover"><img class="collect-img" src=${image}></div>`;
+        console.log("image", image);
+        if(image == "") {
+            image = "images/casual-life-3d-green-notebook-with-orange-bookmark.png"
+            imageHTML = `<div class="collection-cover"><img class="collect-img collect-img-default" src=${image}></div>`;
+        } 
+
         // Create book HTML
         let id = myLibrary[i]["title"].replace(/\s/g, "SPACESPACE");
         let bookHTML = 
@@ -107,7 +116,7 @@ function displayBook(myLibrary) {
                 <i class="fi fi-rr-pencil btn-icon edit" id="edit-${id}"></i>
                 <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
             </div>
-            <div class="collection-cover"><img class="collect-img" src=${myLibrary[i]["cover"]}></div>
+            ${imageHTML}
             <div class="collect-text">
                 <div class="collection-title">${myLibrary[i]["title"]}</div>
                 <div class="collection-author">${myLibrary[i]["author"]}</div>
@@ -147,6 +156,12 @@ function addBookToLibrary() {
     formFilename = document.getElementById('filename').value;
     formStatus = document.getElementById('status').value;
     formRating = document.getElementById('rating').value;
+
+    console.log(formTitle);
+    console.log(formAuthor);
+    console.log(formFilename);
+    console.log(formStatus);
+    console.log(formRating);
 
     // Create new book
     let newBook = new Book(formTitle, formAuthor, formFilename, formStatus, tags, formRating);

@@ -37,6 +37,12 @@ main {
     object-fit: contain;
     border-radius: .25rem;
 }
+.collect-img-default {
+    min-width: 160px;
+    width: 8vw;
+    object-fit: contain;
+    border-radius: .25rem;
+}
 .collect-text {
     padding: 1rem;
     display: flex;
