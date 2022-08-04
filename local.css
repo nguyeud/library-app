@@ -4,16 +4,8 @@ html {
     box-sizing: border-box;
     font-size: 12px;
 }
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7rem;
-    height: 5rem;
-    padding: 3rem 5rem;
-}
 main {
-    min-height: calc(100vh - 16rem);
+    height: calc(100vh - 10rem);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -33,11 +25,12 @@ main {
 /* Collection display */
 .collection {
     width: 220px;
-    background-color: rgb(131, 131, 131);
+    background-color: rgb(131, 131, 131, .25);
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 1.4rem;
+    padding-top: 1rem;
 }
 .collect-img {
     width: 200px;
@@ -46,7 +39,7 @@ main {
 }
 .collect-text {
     width: 100%;
-    padding: 1.4rem;
+    padding: 1rem;
 }
 .collection-title {
     font-family: 'Poppins', sans-serif;

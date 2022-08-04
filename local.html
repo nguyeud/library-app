@@ -35,21 +35,76 @@
                 <i class="fi fi-rr-search"></i>
                 <input type="text" class="form-control shadow-none" id="searchBar">
             </div>
+            <!-- Trigger Modal -->
+            <button id="btn-addBook" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addBook">
+                <i class="fi fi-rr-plus"></i>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="addBook" tabindex="-1" aria-labelledby="addBook" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addBook">Add a book...</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="modalForm">
+                                <div class="form-addBook">
+                                    <label for="title" class="form-label-text">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title">
+                                    <p>Please provide a title.</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="author" class="form-label-text">Author</label>
+                                    <input type="text" class="form-control" name="author" id="author">
+                                    <p>Please provide an author.</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="filename" class="form-label-text">Cover</label>
+                                    <input class="form-control" type="file" id="filename">
+                                    <p>Please choose an image file (i.e. jpg, png).</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="status" class="form-label-text">Status</label>
+                                    <select class="form-select" aria-label="select" name="status" id="status">
+                                        <option value="0">Not Started</option>
+                                        <option value="1">In Progress</option>
+                                        <option value="2">Completed</option>
+                                    </select>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="tag" class="form-label-text">Tags</label>
+                                    <p>Please enter or add a comma after each tag (up to 10 tags).</p>
+                                    <ul id="tagList">
+                                    </ul>
+                                    <input type="text" class="form-control" name="tag" id="tag">
+                                    <p>Limit has been reached! Please remove other tags to add more.</p>
+                                </div>
+                                <div class="form-addBook">
+                                    <label for="rating" class="form-label-text">Rating:</label> <span
+                                        class="form-label-text">0</span>
+                                    <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-saveModal" type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                                onclick="addBookToLibrary(); clearForm()">Save changes</button>
+                            <button id="btn-closeModal" type="button" class="btn btn-warning"
+                                onclick="clearForm()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="nav-links">
                 <button class="btn-small btn-w-icon" id="btn-theme"><i class="fi fi-rr-moon-stars"></i></button>
             </div>
             <img id="user-pfp" src="pfps/casual-life-3d-monstera-plant-with-holes-in-white-pot.png">
         </div>
     </header>
-    <nav>
-        <a class="header-nav-text" href="" id="collectionLink">Collection</p></a>
-        <a class="header-nav-text" href="" id="progressLink">In Progress</p></a>
-        <a class="header-nav-text" href="" id="unreadLink">Unread</p></a>
-    </nav>
     <main>
         <div id="collection">
-            <!-- <img class="collection-empty" src="images/casual-life-3d-green-notebook-with-orange-bookmark.png">
-            <p class="collection-empty" style="text-align: center;">Seems empty... add a book?</p> -->
+            <!-- <img class="collection-empty" src="images/casual-life-3d-green-notebook-with-orange-bookmark.png"> -->
             <div class="collection">
                 <div class="collection-cover"><img class="collect-img" src="covers/hxh.png"></div>
                 <div class="collect-text">
@@ -78,67 +133,6 @@
                     <div class="collection-status">In Progress</div>
                     <div class="collection-tags">"coming-of-age", "drama", "fantasy"</div>
                     <div class="collection-rating">4</div>
-                </div>
-            </div>
-        </div>
-        <!-- Trigger Modal -->
-        <button id="btn-addBook" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addBook">
-            <i class="fi fi-rr-plus"></i>
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="addBook" tabindex="-1" aria-labelledby="addBook" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addBook">Add a book...</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="modalForm">
-                            <div class="form-addBook">
-                                <label for="title" class="form-label-text">Title</label>
-                                <input type="text" class="form-control" name="title" id="title">
-                                <p>Please provide a title.</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="author" class="form-label-text">Author</label>
-                                <input type="text" class="form-control" name="author" id="author">
-                                <p>Please provide an author.</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="filename" class="form-label-text">Cover</label>
-                                <input class="form-control" type="file" id="filename">
-                                <p>Please choose an image file (i.e. jpg, png).</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="status" class="form-label-text">Status</label>
-                                <select class="form-select" aria-label="select" name="status" id="status">
-                                    <option value="0">Not Started</option>
-                                    <option value="1">In Progress</option>
-                                    <option value="2">Completed</option>
-                                </select>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="tag" class="form-label-text">Tags</label>
-                                <p>Please enter or add a comma after each tag (up to 10 tags).</p>
-                                <ul id="tagList">
-                                </ul>
-                                <input type="text" class="form-control" name="tag" id="tag">
-                                <p>Limit has been reached! Please remove other tags to add more.</p>
-                            </div>
-                            <div class="form-addBook">
-                                <label for="rating" class="form-label-text">Rating:</label> <span
-                                    class="form-label-text">0</span>
-                                <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="btn-saveModal" type="button" class="btn btn-warning" data-bs-dismiss="modal"
-                            onclick="addBookToLibrary(); clearForm()">Save changes</button>
-                        <button id="btn-closeModal" type="button" class="btn btn-warning"
-                            onclick="clearForm()">Clear</button>
-                    </div>
                 </div>
             </div>
         </div>
