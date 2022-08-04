@@ -1,3 +1,9 @@
+html {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 12px;
+}
 main {
     height: calc(100vh - 8rem);
     display: flex;
@@ -15,7 +21,8 @@ main {
 }
 #landing-header-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 4vw;
+    font-size: 4rem;
+    padding: 2rem;
     text-align: center;
 }
 #landing-buttons {
@@ -24,11 +31,13 @@ main {
     gap: 4rem;
 }
 .btn-landing {
-    font-size: clamp(1.2rem, 1vw, 2rem);
-    width: 8vw;
-    min-width: 6rem;
-    padding: 1vw;
-    border-radius: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    width: 12rem;
+    height: 5rem;
+    border-radius: 1rem;
 }
 /* Right-side */
 #main-right-side {
@@ -39,4 +48,11 @@ main {
 #landing-image {
     width: 50vw;
     max-width: 720px;
+}
+
+/* MEDIA QUERY */
+@media only screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
 }

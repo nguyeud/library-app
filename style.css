@@ -110,10 +110,3 @@ p {
 }
 
 /* BUTTON */
-.btn {
-    color: #fff;
-}
-.btn:hover {
-    color: #fff;
-    transform: scale(1.025 ,1.025);
-}
