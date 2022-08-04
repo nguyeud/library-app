@@ -1,4 +1,4 @@
-// VARIABLES AND CONSTANTS
+// TAG FUNCTION
 let formTitle = document.getElementById('title').value;
 let formAuthor = document.getElementById('author').value;
 let formFilename = document.getElementById('filename').value;
@@ -6,12 +6,9 @@ let formStatus = document.getElementById('status').value;
 let formRating = document.getElementById('rating').value;
 let modalForm = document.getElementById("modalForm");
 const formTag = document.getElementById('tag');
-
-// TAG FUNCTION
-const ul = document.querySelector("ul");
-
+const ul = document.getElementById("tagList");
+// Empty tags list
 let tags = [];
-
 function createTag() {
     // removing all li tags before adding so there will be no duplicates
     ul.querySelectorAll("li").forEach(li => li.remove());
@@ -20,13 +17,11 @@ function createTag() {
         ul.insertAdjacentHTML("afterbegin", liTag); // inserting or adding li insude ul tag
     });
 };
-
 function removeTag(element, tag) {
     let index = tags.indexOf(tag); // getting index of tag being removed
     tags = [...tags.slice(0, index), ...tags.slice(index + 1)]; // removing or exclusing selected tag from array
     element.parentElement.remove(); // removing li of removed tag
 }
-
 function addTag(e) {
     if(e.key == "Enter") {
         let tag = e.target.value.replace(/\s+/g, " "); // remove unwanted spaces from user tag
@@ -41,10 +36,11 @@ function addTag(e) {
         };
     };
 };
-
 formTag.addEventListener("keyup", addTag);
 
 // SAVE BOOK INFORMATION
+const collectionContainer = document.getElementById("collection");
+// initial library
 let myLibrary = [
     {"title": "Hunter x Hunter",
     "author": "Yoshihiro Togashi",
@@ -82,7 +78,46 @@ let myLibrary = [
     "rating": "4"
     }
 ];
+// function to display books in HTML from library
+function displayBook(myLibrary) {
+    console.log(myLibrary);
+    for(let i = 0; i < myLibrary.length; i++) {
+        // Create status of book
+        let status = myLibrary[i]["status"];
+        if(status == "0") {
+            status = "Not Started";
+        } else if(status == "1") {
+            status = "In Progress";
+        } else if(status == "2") {
+            status = "Completed";
+        }
+        // create book HTML
+        let bookHTML = 
+        `<div class="collection">
+            <div class="collection-cover"><img class="collect-img" src=${myLibrary[i]["cover"]}></div>
+            <div class="collect-text">
+                <div class="collection-title">${myLibrary[i]["title"]}</div>
+                <div class="collection-author">${myLibrary[i]["author"]}</div>
+                <div class="collection-status"><span class="bold-text">Status:</span> <span class="collect-status">${status}</span></div>
+                <div class="collection-rating"><span class="bold-text">Rating:</span> <span class="collect-rating">${myLibrary[i]["rating"]}</span></div>
+                <div class="collection-tags">
+                    <ul id="collect-tags">
+                    </ul>
+                </div>
+            </div>
+        </div>`
+        // create genre tags
+        collectionContainer.insertAdjacentHTML("afterbegin", bookHTML);
+        const collect_ul = document.getElementById("collect-tags");
+        let collect_tags = myLibrary[i]["tags"];
+        collect_tags.forEach(tag =>{
+            let liTag = `<li class="collect-tag">${tag}</li>`;
+            collect_ul.insertAdjacentHTML("afterbegin", liTag); // inserting or adding li insude ul tag
+        })
+    }
+}
 
+// BOOK CONSTRUCTOR
 function Book(title, author, filename, status, tags, rating) {
     this.title = title
     this.author = author
@@ -91,9 +126,6 @@ function Book(title, author, filename, status, tags, rating) {
     this.tags = tags
     this.rating = rating
 };
-
-// [{"title":"Hello","author":"WORLD!","cover":"C:\\fakepath\\icons8-book-96.png","status":"2","tags":["this is a tag","hehe"],"rating":"2"},{"title":"BOOK","author":"AUTHOR","cover":"","status":"1","tags":["this is a genre","do i like this book?"],"rating":"5"},{"title":"ANIME","author":"MANGA","cover":"","status":"0","tags":["anime","pls"],"rating":"1"}]
-
 function addBookToLibrary() {
     // Set book information variables
     formTitle = document.getElementById('title').value;
@@ -108,8 +140,13 @@ function addBookToLibrary() {
     // Push to local storage
     myLibrary.push(newBook);
     window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+
+    // Redisplay books
+    console.log(myLibrary[myLibrary.length - 1])
+    displayBook(myLibrary[myLibrary.length - 1]);
 };
 
+// CLEAR FORM
 function clearForm() {
     modalForm.reset();
     // Add removal of tags displayed
@@ -121,3 +158,9 @@ function clearForm() {
     } 
     tags = [];
 }
+
+// ON WINDOW LOAD
+window.addEventListener('load', (event) => {
+    // load books
+    displayBook(myLibrary);
+  });
