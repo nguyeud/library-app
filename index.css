@@ -1,11 +1,9 @@
 html {
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
     font-size: 12px;
 }
 main {
-    height: calc(100vh - 8rem);
     display: flex;
     justify-content: center;
     align-items: center;

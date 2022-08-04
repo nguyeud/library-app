@@ -1,17 +1,13 @@
 html {
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
     font-size: 12px;
 }
 main {
-    min-height: calc(100vh - 10rem);
-    width: 100vw;
     display: flex;
     flex-direction: column;
     gap: 4rem;
     padding: 3rem 5rem;
-    flex: 1 1 0;
 }
 
 /* TYPOGRAPHY */
@@ -32,7 +28,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 1rem;
     width: 11vw;
     min-width: 224px;
 }
@@ -40,10 +35,13 @@ main {
     min-width: 200px;
     width: 10vw;
     object-fit: contain;
+    border-radius: .25rem;
 }
 .collect-text {
-    width: 100%;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
 }
 .collection-title {
     font-family: 'Poppins', sans-serif;
@@ -56,6 +54,7 @@ main {
 #collect-tags {
     display: flex;
     flex-wrap: wrap;
+    gap: .25rem;
 }
 .collect-tag {
     display: flex;
@@ -63,6 +62,13 @@ main {
     background-color: #e9ecef;
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
+}
+.collection-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
 }
 
 /* FORM */
@@ -95,10 +101,4 @@ form {
     font-size: 1rem;
     position: relative;
     top: 2px;
-}
-
-/* BUTTONS */
-.btn-small {
-    width: 4rem;
-    height: 3rem;
 }

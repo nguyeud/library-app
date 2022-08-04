@@ -80,7 +80,6 @@ let myLibrary = [
 ];
 // function to display books in HTML from library
 function displayBook(myLibrary) {
-    console.log(myLibrary);
     for(let i = 0; i < myLibrary.length; i++) {
         // Create status of book
         let status = myLibrary[i]["status"];
@@ -94,6 +93,10 @@ function displayBook(myLibrary) {
         // create book HTML
         let bookHTML = 
         `<div class="collection">
+            <div class="collection-actions">
+                <i class="fi fi-rr-pencil"></i>
+                <i class="fi fi-rr-trash"></i>
+            </div>
             <div class="collection-cover"><img class="collect-img" src=${myLibrary[i]["cover"]}></div>
             <div class="collect-text">
                 <div class="collection-title">${myLibrary[i]["title"]}</div>
@@ -141,9 +144,8 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
-    // Redisplay books
-    console.log(myLibrary[myLibrary.length - 1])
-    displayBook(myLibrary[myLibrary.length - 1]);
+    // Display new book
+    displayBook([newBook]);
 };
 
 // CLEAR FORM
@@ -161,6 +163,7 @@ function clearForm() {
 
 // ON WINDOW LOAD
 window.addEventListener('load', (event) => {
-    // load books
-    displayBook(myLibrary);
+    // Load books
+    window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    displayBook(JSON.parse(window.localStorage.getItem("myLibrary")));
   });
