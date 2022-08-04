@@ -45,7 +45,43 @@ function addTag(e) {
 formTag.addEventListener("keyup", addTag);
 
 // SAVE BOOK INFORMATION
-let myLibrary = [];
+let myLibrary = [
+    {"title": "Hunter x Hunter",
+    "author": "Yoshihiro Togashi",
+    "cover": "covers/hxh.png",
+    "status": "1",
+    "tags": ["adventure", "fantasy", "martial arts"],
+    "rating": "5"
+    },
+    {"title": "Naruto",
+    "author": "Masashi Kishimoto",
+    "cover": "covers/naruto.png",
+    "status": "2",
+    "tags": ["adventure", "fantasy comedy", "martial arts"],
+    "rating": "3"
+    },
+    {"title": "Berserk",
+    "author": "Kentaro Miura",
+    "cover": "covers/berserk.png",
+    "status": "2",
+    "tags": ["dark fantasy", "epic fantasy", "sword and sorcery"],
+    "rating": "5"
+    },
+    {"title": "Demon Slayer",
+    "author": "Koyoharu Gotouge",
+    "cover": "covers/ds.png",
+    "status": "2",
+    "tags": ["adventure", "dark fantasy", "martial arts"],
+    "rating": "4"
+    },
+    {"title": "Beastars",
+    "author": "Paru Itagaki",
+    "cover": "covers/beastars.png",
+    "status": "1",
+    "tags": ["coming-of-age", "drama", "fantasy"],
+    "rating": "4"
+    }
+];
 
 function Book(title, author, filename, status, tags, rating) {
     this.title = title
@@ -55,6 +91,8 @@ function Book(title, author, filename, status, tags, rating) {
     this.tags = tags
     this.rating = rating
 };
+
+// [{"title":"Hello","author":"WORLD!","cover":"C:\\fakepath\\icons8-book-96.png","status":"2","tags":["this is a tag","hehe"],"rating":"2"},{"title":"BOOK","author":"AUTHOR","cover":"","status":"1","tags":["this is a genre","do i like this book?"],"rating":"5"},{"title":"ANIME","author":"MANGA","cover":"","status":"0","tags":["anime","pls"],"rating":"1"}]
 
 function addBookToLibrary() {
     // Set book information variables

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link type="image/png" sizes="32x32" rel="icon" href="images/icons8-diary-32.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="images/icons8-book-96.png">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +35,9 @@
                 <i class="fi fi-rr-search"></i>
                 <input type="text" class="form-control shadow-none" id="searchBar">
             </div>
+            <div class="nav-links">
+                <button class="btn-small btn-w-icon" id="btn-theme"><i class="fi fi-rr-moon-stars"></i></button>
+            </div>
             <img id="user-pfp" src="pfps/casual-life-3d-monstera-plant-with-holes-in-white-pot.png">
         </div>
     </header>
@@ -45,8 +48,38 @@
     </nav>
     <main>
         <div id="collection">
-            <img class="collection-empty" src="images/casual-life-3d-green-notebook-with-orange-bookmark.png">
-            <p class="collection-empty" style="text-align: center;">Seems empty... add a book?</p>
+            <!-- <img class="collection-empty" src="images/casual-life-3d-green-notebook-with-orange-bookmark.png">
+            <p class="collection-empty" style="text-align: center;">Seems empty... add a book?</p> -->
+            <div class="collection">
+                <div class="collection-cover"><img class="collect-img" src="covers/hxh.png"></div>
+                <div class="collect-text">
+                    <div class="collection-title">Hunter x Hunter</div>
+                    <div class="collection-author">Yoshihiro Togashi</div>
+                    <div class="collection-status">Status: <span class="collect-status">In Progress</span></div>
+                    <div class="collection-tags">"adventure", "fantasy", "martial arts"</div>
+                    <div class="collection-rating">5</div>
+                </div>
+            </div>
+            <div class="collection">
+                <div class="collection-cover"><img class="collect-img" src="covers/naruto.png"></div>
+                <div class="collect-text">
+                    <div class="collection-title">Naruto</div>
+                    <div class="collection-author">Masashi Kishimoto</div>
+                    <div class="collection-status">Completed</div>
+                    <div class="collection-tags">"adventure", "fantasy comedy", "martial arts"</div>
+                    <div class="collection-rating">3</div>
+                </div>
+            </div>
+            <div class="collection">
+                <div class="collection-cover"><img class="collect-img" src="covers/beastars.png"></div>
+                <div class="collect-text">
+                    <div class="collection-title">Beastars</div>
+                    <div class="collection-author">Paru Itagaki</div>
+                    <div class="collection-status">In Progress</div>
+                    <div class="collection-tags">"coming-of-age", "drama", "fantasy"</div>
+                    <div class="collection-rating">4</div>
+                </div>
+            </div>
         </div>
         <!-- Trigger Modal -->
         <button id="btn-addBook" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addBook">

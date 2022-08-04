@@ -1,3 +1,9 @@
+html {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 12px;
+}
 nav {
     display: flex;
     align-items: center;
@@ -10,29 +16,45 @@ main {
     min-height: calc(100vh - 16rem);
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     gap: 4rem;
+    padding: 3rem 5rem;
 }
 
 /* TYPOGRAPHY */
 
-
 /* NAV */
-
 
 /* MAIN */
 #collection {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     gap: 4rem;
-    z-index: 2;
 }
-#collection > img {
-    max-width: 20rem;
-    height: auto;
+/* Collection display */
+.collection {
+    width: 220px;
+    background-color: rgb(131, 131, 131);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.4rem;
+}
+.collect-img {
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
+}
+.collect-text {
+    width: 100%;
+    padding: 1.4rem;
+}
+.collection-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.collection-author {
+    font-style: italic;
 }
 
 /* FORM */
@@ -60,8 +82,7 @@ form {
 }
 .form-addBook ul li i {
     cursor: pointer;
-} display: flex;
-}
+} 
 .fi-rr-cross-small {
     font-size: 1rem;
     position: relative;

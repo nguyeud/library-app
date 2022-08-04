@@ -54,6 +54,9 @@ p {
     margin: 0;
     padding: 0;
 }
+.bold-text {
+    font-weight: 500;
+}
 .header-logo-text {
     font-family: 'Poppins', sans-serif;
     font-size: 2rem;
