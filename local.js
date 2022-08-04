@@ -1,3 +1,42 @@
+// TEST LIBRARY
+// let myLibrary = [
+//     {"title": "Hunter x Hunter",
+//     "author": "Yoshihiro Togashi",
+//     "cover": "covers/hxh.png",
+//     "status": "1",
+//     "tags": ["adventure", "fantasy", "martial arts"],
+//     "rating": "5"
+//     },
+//     {"title": "Naruto",
+//     "author": "Masashi Kishimoto",
+//     "cover": "covers/naruto.png",
+//     "status": "2",
+//     "tags": ["adventure", "fantasy comedy", "martial arts"],
+//     "rating": "3"
+//     },
+//     {"title": "Berserk",
+//     "author": "Kentaro Miura",
+//     "cover": "covers/berserk.png",
+//     "status": "2",
+//     "tags": ["dark fantasy", "epic fantasy", "sword and sorcery"],
+//     "rating": "5"
+//     },
+//     {"title": "Demon Slayer",
+//     "author": "Koyoharu Gotouge",
+//     "cover": "covers/ds.png",
+//     "status": "2",
+//     "tags": ["adventure", "dark fantasy", "martial arts"],
+//     "rating": "4"
+//     },
+//     {"title": "Beastars",
+//     "author": "Paru Itagaki",
+//     "cover": "covers/beastars.png",
+//     "status": "1",
+//     "tags": ["coming-of-age", "drama", "fantasy"],
+//     "rating": "4"
+//     }
+// ];
+
 // TAG FUNCTION
 let formTitle = document.getElementById('title').value;
 let formAuthor = document.getElementById('author').value;
@@ -40,45 +79,14 @@ formTag.addEventListener("keyup", addTag);
 
 // SAVE BOOK INFORMATION
 const collectionContainer = document.getElementById("collection");
-// initial library
-let myLibrary = [
-    {"title": "Hunter x Hunter",
-    "author": "Yoshihiro Togashi",
-    "cover": "covers/hxh.png",
-    "status": "1",
-    "tags": ["adventure", "fantasy", "martial arts"],
-    "rating": "5"
-    },
-    {"title": "Naruto",
-    "author": "Masashi Kishimoto",
-    "cover": "covers/naruto.png",
-    "status": "2",
-    "tags": ["adventure", "fantasy comedy", "martial arts"],
-    "rating": "3"
-    },
-    {"title": "Berserk",
-    "author": "Kentaro Miura",
-    "cover": "covers/berserk.png",
-    "status": "2",
-    "tags": ["dark fantasy", "epic fantasy", "sword and sorcery"],
-    "rating": "5"
-    },
-    {"title": "Demon Slayer",
-    "author": "Koyoharu Gotouge",
-    "cover": "covers/ds.png",
-    "status": "2",
-    "tags": ["adventure", "dark fantasy", "martial arts"],
-    "rating": "4"
-    },
-    {"title": "Beastars",
-    "author": "Paru Itagaki",
-    "cover": "covers/beastars.png",
-    "status": "1",
-    "tags": ["coming-of-age", "drama", "fantasy"],
-    "rating": "4"
-    }
-];
-// function to display books in HTML from library
+// If localStorage is null, then create library array
+// If localStorage is not null, then load localStorage library
+if(JSON.parse(window.localStorage.getItem("myLibrary")) !== null) {
+    myLibrary = JSON.parse(window.localStorage.getItem("myLibrary"));
+} else {
+    myLibrary = [];
+}
+// Function to display books in HTML from library
 function displayBook(myLibrary) {
     for(let i = 0; i < myLibrary.length; i++) {
         // Create status of book
@@ -90,9 +98,9 @@ function displayBook(myLibrary) {
         } else if(status == "2") {
             status = "Completed";
         }
-        // create book HTML
+
+        // Create book HTML
         let id = myLibrary[i]["title"].replace(/\s/g, "SPACESPACE");
-        console.log(id);
         let bookHTML = 
         `<div class="collection" id="${id}">
             <div class="collection-actions">
@@ -111,7 +119,8 @@ function displayBook(myLibrary) {
                 </div>
             </div>
         </div>`
-        // create genre tags
+
+        // Create genre tags
         collectionContainer.insertAdjacentHTML("afterbegin", bookHTML);
         const collect_ul = document.getElementById("collect-tags");
         let collect_tags = myLibrary[i]["tags"];
@@ -156,7 +165,7 @@ function clearForm() {
     // Add removal of tags displayed
     let tagList = document.getElementById("tagList");
     let listLength = tagList.children.length;
-
+    // Remove tags
     for (i = 0; i < listLength; i++) {
         tagList.removeChild(tagList.children[0]);
     } 
@@ -203,7 +212,9 @@ waitForElement(".delete", function(){
 
 // ON WINDOW LOAD
 window.addEventListener('load', (event) => {
-    // Load books
+    // Load books to test
     window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-    displayBook(JSON.parse(window.localStorage.getItem("myLibrary")));
+    if(myLibrary.length !== 0 || myLibrary !== null) {
+        displayBook(JSON.parse(window.localStorage.getItem("myLibrary")));
+    }
 })
