@@ -44,6 +44,7 @@ main {
     border-radius: .25rem;
 }
 .collect-text {
+    width: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -76,13 +77,13 @@ main {
     gap: 1rem;
     width: 100%;
 }
-.btn-icon {
+/* .btn-icon {
     transition: color .5s;
 }
 .btn-icon:hover {
     cursor: pointer;
     color: #ffc107;
-}
+} */
 
 /* FORM */
 form {

@@ -40,7 +40,7 @@
 // TAG FUNCTION
 let formTitle = document.getElementById('title').value;
 let formAuthor = document.getElementById('author').value;
-let formFilename = document.getElementById('filename').value;
+// let formFilename = document.getElementById('filename').value;
 let formStatus = document.getElementById('status').value;
 let formRating = document.getElementById('rating').value;
 let modalForm = document.getElementById("modalForm");
@@ -89,6 +89,9 @@ if(JSON.parse(window.localStorage.getItem("myLibrary")) !== null) {
 // Function to display books in HTML from library
 function displayBook(myLibrary) {
     for(let i = 0; i < myLibrary.length; i++) {
+        // ID of book
+        let id = myLibrary[i]["title"].replace(/\s/g, "SPACESPACE");
+
         // Create status of book
         let status = myLibrary[i]["status"];
         if(status == "0") {
@@ -99,24 +102,23 @@ function displayBook(myLibrary) {
             status = "Completed";
         }
 
-        // If no cover image is available
-        let image = myLibrary[i]["cover"];
-        let imageHTML = `<div class="collection-cover"><img class="collect-img" src=${image}></div>`;
-        console.log("image", image);
-        if(image == "") {
-            image = "images/casual-life-3d-green-notebook-with-orange-bookmark.png"
-            imageHTML = `<div class="collection-cover"><img class="collect-img collect-img-default" src=${image}></div>`;
-        } 
+        // If no cover image is available - FUTURE
+        // let image = myLibrary[i]["cover"];
+        // let imageHTML = `<div class="collection-cover"><img class="collect-img" src=${image}></div>`;
+        // console.log("image", image);
+        // if(image == "") {
+        //     image = "images/casual-life-3d-green-notebook-with-orange-bookmark.png"
+        //     imageHTML = `<div class="collection-cover"><img class="collect-img collect-img-default" src=${image}></div>`;
+        // } 
 
         // Create book HTML
-        let id = myLibrary[i]["title"].replace(/\s/g, "SPACESPACE");
         let bookHTML = 
         `<div class="collection" id="${id}">
             <div class="collection-actions">
-                <i class="fi fi-rr-pencil btn-icon edit" id="edit-${id}"></i>
-                <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
+                <button class="btn btn-small">
+                    <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
+                </button>
             </div>
-            ${imageHTML}
             <div class="collect-text">
                 <div class="collection-title">${myLibrary[i]["title"]}</div>
                 <div class="collection-author">${myLibrary[i]["author"]}</div>
@@ -144,7 +146,7 @@ function displayBook(myLibrary) {
 function Book(title, author, filename, status, tags, rating) {
     this.title = title
     this.author = author
-    this.cover = filename
+    // this.cover = filename
     this.status = status
     this.tags = tags
     this.rating = rating
@@ -153,18 +155,13 @@ function addBookToLibrary() {
     // Set book information variables
     formTitle = document.getElementById('title').value;
     formAuthor = document.getElementById('author').value;
-    formFilename = document.getElementById('filename').value;
+    // formFilename = document.getElementById('filename').value;
     formStatus = document.getElementById('status').value;
     formRating = document.getElementById('rating').value;
 
-    console.log(formTitle);
-    console.log(formAuthor);
-    console.log(formFilename);
-    console.log(formStatus);
-    console.log(formRating);
-
     // Create new book
-    let newBook = new Book(formTitle, formAuthor, formFilename, formStatus, tags, formRating);
+    // let newBook = new Book(formTitle, formAuthor, formFilename, formStatus, tags, formRating);
+    let newBook = new Book(formTitle, formAuthor, formStatus, tags, formRating);
 
     // Push to local storage
     myLibrary.push(newBook);
