@@ -37,6 +37,18 @@
 //     }
 // ];
 
+// EMPTY DISPLAY
+const emptyCol = document.getElementById("collection-empty");
+function showEmpty() {
+    if(myLibrary.length == 0 || JSON.parse(window.localStorage.getItem("myLibrary")) == null) {
+        emptyCol.style.display = "flex";
+        emptyCol.style.visibility = "visible";
+    } else {
+        emptyCol.style.display = "none";
+        emptyCol.style.visibility = "hidden";
+    }
+}
+
 // TAG FUNCTION
 let formTitle = document.getElementById('title').value;
 let formAuthor = document.getElementById('author').value;
@@ -77,6 +89,13 @@ function addTag(e) {
 };
 formTag.addEventListener("keyup", addTag);
 
+// SLIDER VALUE
+const sliderVal = document.getElementById("modal-rating");
+function sliderValue() {
+    let value = document.getElementById("rating").value;
+    sliderVal.innerText = value;
+}
+
 // SAVE BOOK INFORMATION
 const collectionContainer = document.getElementById("collection");
 // If localStorage is null, then create library array
@@ -102,22 +121,11 @@ function displayBook(myLibrary) {
             status = "Completed";
         }
 
-        // If no cover image is available - FUTURE
-        // let image = myLibrary[i]["cover"];
-        // let imageHTML = `<div class="collection-cover"><img class="collect-img" src=${image}></div>`;
-        // console.log("image", image);
-        // if(image == "") {
-        //     image = "images/casual-life-3d-green-notebook-with-orange-bookmark.png"
-        //     imageHTML = `<div class="collection-cover"><img class="collect-img collect-img-default" src=${image}></div>`;
-        // } 
-
         // Create book HTML
         let bookHTML = 
         `<div class="collection" id="${id}">
             <div class="collection-actions">
-                <button class="btn btn-small">
-                    <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
-                </button>
+                <i class="fi fi-rr-trash btn-icon delete" id="delete-${id}"></i>
             </div>
             <div class="collect-text">
                 <div class="collection-title">${myLibrary[i]["title"]}</div>
@@ -140,10 +148,11 @@ function displayBook(myLibrary) {
             collect_ul.insertAdjacentHTML("afterbegin", liTag); // inserting or adding li insude ul tag
         })
     }
+    showEmpty();
 }
 
 // BOOK CONSTRUCTOR
-function Book(title, author, filename, status, tags, rating) {
+function Book(title, author, status, tags, rating) {
     this.title = title
     this.author = author
     // this.cover = filename
@@ -155,14 +164,12 @@ function addBookToLibrary() {
     // Set book information variables
     formTitle = document.getElementById('title').value;
     formAuthor = document.getElementById('author').value;
-    // formFilename = document.getElementById('filename').value;
     formStatus = document.getElementById('status').value;
     formRating = document.getElementById('rating').value;
 
     // Create new book
-    // let newBook = new Book(formTitle, formAuthor, formFilename, formStatus, tags, formRating);
     let newBook = new Book(formTitle, formAuthor, formStatus, tags, formRating);
-
+    
     // Push to local storage
     myLibrary.push(newBook);
     window.localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
@@ -177,11 +184,15 @@ function clearForm() {
     // Add removal of tags displayed
     let tagList = document.getElementById("tagList");
     let listLength = tagList.children.length;
+
     // Remove tags
     for (i = 0; i < listLength; i++) {
         tagList.removeChild(tagList.children[0]);
     } 
     tags = [];
+
+    // Reset slider
+    sliderVal.innerText = "0";
 }
 
 // DELETE FUNCTION
@@ -197,7 +208,7 @@ function waitForElement(element, callBack){
     }, 500)
 }
 waitForElement(".delete", function(){
-    const deleteBtn = document.querySelectorAll(".delete");
+    let deleteBtn = document.querySelectorAll(".delete");
     deleteBtn.forEach(book => {
         book.addEventListener("click", e => {
             // get title of book
@@ -229,4 +240,5 @@ window.addEventListener('load', (event) => {
     if(myLibrary.length !== 0 || myLibrary !== null) {
         displayBook(JSON.parse(window.localStorage.getItem("myLibrary")));
     }
+    showEmpty();
 })

@@ -70,16 +70,15 @@
                                 </div>
                                 <div class="form-addBook">
                                     <label for="tag" class="form-label-text">Tags</label>
-                                    <p>Please enter or add a comma after each tag (up to 10 tags).</p>
+                                    <p>Please enter after each tag (up to 10 tags).</p>
                                     <ul id="tagList">
                                     </ul>
                                     <input type="text" class="form-control" name="tag" id="tag">
-                                    <p>Limit has been reached! Please remove other tags to add more.</p>
                                 </div>
                                 <div class="form-addBook">
                                     <label for="rating" class="form-label-text">Rating:</label> <span
-                                        class="form-label-text">0</span>
-                                    <input type="range" class="form-range" id="rating" value="1" min="1" max="5">
+                                        class="form-label-text" id="modal-rating">0</span>
+                                    <input type="range" class="form-range" id="rating" value="1" min="1" max="5" onchange="sliderValue()">
                                 </div>
                             </form>
                         </div>
@@ -92,14 +91,15 @@
                     </div>
                 </div>
             </div>
-            <div class="nav-links">
-                <button class="btn-small btn-w-icon" id="btn-theme"><i class="fi fi-rr-moon-stars"></i></button>
-            </div>
         </div>
     </header>
     <main>
         <div id="collection">
-            <!-- <img class="collection-empty" src="images/casual-life-3d-green-notebook-with-orange-bookmark.png"> -->
+            <!-- Collection of books here -->
+        </div>
+        <div id="collection-empty">
+            <img src="images/casual-life-3d-green-notebook-with-orange-bookmark.png">
+            <p>Looks empty... wanna add a book?</p>
         </div>
     </main>
     <footer>

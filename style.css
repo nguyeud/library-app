@@ -100,19 +100,16 @@ p {
     border-radius: 50%;
     object-fit: scale-down;
 }
-#searchWrapper {
-    width: 50%;
-    display: flex;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    padding: 0.25rem .5rem;
-}
-#searchBar, #searchBar:focus {
-    border: none;
-}
 
 /* BUTTONS */
 .btn-small {
     width: 4rem;
     height: 3rem;
+}
+.btn-icon {
+    transition: color .5s;
+}
+.btn-icon:hover {
+    color: rgb(255,193,7);
+    cursor: pointer;
 }
