@@ -9,6 +9,6 @@ A local storage application for tracking books.
 # Frameworks
 * Bootstrap
 
-![Screenshot](images/library-1.png)
-
 ![Screenshot](images/library-2.png)
+
+![Screenshot](images/library-1.png)
